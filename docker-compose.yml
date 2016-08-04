@@ -1,0 +1,20 @@
+www:
+  image: erroneousbosch/rpi-apache-drupal
+  volumes: 
+    - /mnt/www:/var/www 
+  ports: 
+    - "80:80"
+  restart: unless-stopped
+  privileged: true
+  
+
+plex:
+  image: erroneousbosch/rpi-plex:latest
+  net: "host"
+  container_name: plex
+  ports:
+   - "32400:32400"
+  restart: unless-stopped
+  volumes:
+   - /mnt/plex/config:/config
+   - /mnt/plex/data:/data
